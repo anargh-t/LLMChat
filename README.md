@@ -2,6 +2,9 @@
 
 A modern, interactive LLM chat interface built with Streamlit and Ollama that allows users to generate responses using various LLM models.
 
+![LLMChat Interface](examples\image1.png)
+![LLMChat Response](examples\image2.png)
+
 ## ✨ Features
 
 - **Interactive Web Interface**: Clean and intuitive Streamlit-based UI
@@ -23,8 +26,8 @@ A modern, interactive LLM chat interface built with Streamlit and Ollama that al
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/llmchat.git
-   cd llmchat
+   git clone https://github.com/anargh-t/LLMChat.git
+   cd LLMChat
    ```
 
 2. **Install dependencies**
@@ -109,61 +112,6 @@ llmchat/
     └── sample_prompts.txt
 ```
 
-### Adding New Features
-
-1. **New Models**: Add support for additional Ollama models
-2. **Chat History**: Implement conversation memory
-3. **File Upload**: Allow users to upload documents for analysis
-4. **Export Responses**: Add functionality to save conversations
-5. **Custom Styling**: Enhance the UI with custom CSS
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Commit your changes**: `git commit -m 'Add amazing feature'`
-4. **Push to the branch**: `git push origin feature/amazing-feature`
-5. **Open a Pull Request**
-
-### Development Guidelines
-
-- Follow PEP 8 style guidelines
-- Add docstrings to new functions
-- Include error handling for new features
-- Test your changes before submitting
-
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [Streamlit](https://streamlit.io/) for the amazing web framework
-- [Ollama](https://ollama.ai/) for providing easy access to LLM models
-- The open-source community for inspiration and tools
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/yourusername/llmchat/issues) page
-2. Create a new issue with detailed information
-3. Include your system information and error messages
-
-## 🔮 Roadmap
-
-- [ ] Add conversation history
-- [ ] Support for file uploads
-- [ ] Multiple model selection in UI
-- [ ] Export conversation feature
-- [ ] Custom model fine-tuning
-- [ ] API endpoint for external integrations
-- [ ] Mobile-responsive design improvements
-
----
-
-**Made with ❤️ using Streamlit and Ollama**
-
-⭐ **Star this repository if you find it helpful!** 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 

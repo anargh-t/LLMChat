@@ -1,7 +1,7 @@
 """
-Test file for LLMChat
+Test file for AI Chatbot
 
-This file contains basic tests to ensure the LLM chat interface functionality works correctly.
+This file contains basic tests to ensure the chatbot functionality works correctly.
 """
 
 import unittest
@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from chatbot import generate_llm_response, format_response
 
 class TestChatbot(unittest.TestCase):
-    """Test cases for the LLMChat interface."""
+    """Test cases for the AI Chatbot."""
     
     def test_format_response(self):
         """Test the format_response function."""
@@ -46,14 +46,14 @@ class TestChatbot(unittest.TestCase):
         mock_ollama.chat.return_value = mock_response
         
         # Test the function
-        result = generate_llm_response("Test prompt", "llama2")
+        result = generate_llm_response("Test prompt", "llama3.2")
         
         # Verify the result
         self.assertEqual(result, "This is a test response")
         
         # Verify ollama.chat was called correctly
         mock_ollama.chat.assert_called_once_with(
-            model="llama2",
+            model="llama3.2",
             messages=[{'role': 'user', 'content': 'Test prompt'}]
         )
     
@@ -65,7 +65,7 @@ class TestChatbot(unittest.TestCase):
         
         # Test that the function raises an exception
         with self.assertRaises(Exception) as context:
-            generate_llm_response("Test prompt", "llama2")
+            generate_llm_response("Test prompt", "llama3.2")
         
         # Verify the error message
         self.assertIn("Error communicating with Ollama", str(context.exception))
@@ -74,11 +74,11 @@ class TestChatbot(unittest.TestCase):
         """Test response generation with invalid input."""
         # Test with empty prompt
         with self.assertRaises(Exception):
-            generate_llm_response("", "llama2")
+            generate_llm_response("", "llama3.2")
         
         # Test with None prompt
         with self.assertRaises(Exception):
-            generate_llm_response(None, "llama2")
+            generate_llm_response(None, "llama3.2")
 
 if __name__ == '__main__':
     unittest.main() 

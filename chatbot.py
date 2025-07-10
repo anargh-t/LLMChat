@@ -1,7 +1,7 @@
 """
-LLMChat - LLM Chat Interface
+AI Chatbot with Streamlit and Ollama
 
-A modern, interactive LLM chat interface that allows users to generate responses
+A modern, interactive AI chatbot that allows users to generate responses
 using various LLM models through Ollama.
 
 Author: Anargh T
@@ -22,13 +22,13 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-def generate_llm_response(prompt: str, model: str = "llama2") -> str:
+def generate_llm_response(prompt: str, model: str = "llama3.2") -> str:
     """
     Generate a response from the LLM using Ollama.
     
     Args:
         prompt (str): The user's input prompt
-        model (str): The Ollama model to use (default: llama2)
+        model (str): The Ollama model to use (default: llama3.2)
     
     Returns:
         str: The generated response from the LLM
@@ -72,7 +72,7 @@ def main():
         
         # Model selection
         st.subheader("Model Settings")
-        model_options = ["llama2", "llama3", "mistral", "codellama", "neural-chat"]
+        model_options = ["llama3.2", "llama3.1", "mistral", "codellama", "neural-chat"]
         selected_model = st.selectbox(
             "Choose Model:",
             model_options,
@@ -94,8 +94,8 @@ def main():
         - Clean interface
         
         **Models Available:**
-        - llama2 (default)
-        - llama3
+        - llama3.2 (default)
+        - llama3.1
         - mistral
         - codellama
         - neural-chat
