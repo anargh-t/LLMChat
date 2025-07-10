@@ -1,0 +1,49 @@
+# Sample Prompts for AI Chatbot
+
+## Creative Writing
+- Write a short story about a robot learning to paint
+- Create a poem about artificial intelligence
+- Write a dialogue between a human and an AI about consciousness
+- Describe a futuristic city in 2050
+
+## Educational
+- Explain quantum computing in simple terms
+- What are the benefits of renewable energy?
+- How does machine learning work?
+- Explain the concept of blockchain technology
+
+## Practical
+- Create a recipe for chocolate chip cookies
+- Write a professional email requesting a meeting
+- Provide tips for improving productivity
+- Suggest a workout routine for beginners
+
+## Technical
+- Explain the difference between HTTP and HTTPS
+- What is the purpose of Docker containers?
+- How do neural networks work?
+- Explain the concept of API endpoints
+
+## Fun & Entertainment
+- Write a joke about programming
+- Create a riddle about technology
+- Write a short script for a sci-fi movie scene
+- Describe an alien species and their culture
+
+## Business & Professional
+- Write a mission statement for a tech startup
+- Create a SWOT analysis for a coffee shop
+- Write a job description for a data scientist
+- Provide tips for effective team communication
+
+## Problem Solving
+- How would you solve the problem of food waste?
+- Suggest ways to reduce plastic pollution
+- What are some solutions for traffic congestion?
+- How can we improve education in remote areas?
+
+## Personal Development
+- Write a morning routine for better productivity
+- Provide tips for learning a new language
+- Suggest ways to overcome procrastination
+- Write a meditation guide for beginners 
