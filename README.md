@@ -2,8 +2,8 @@
 
 A modern, interactive LLM chat interface built with Streamlit and Ollama that allows users to generate responses using various LLM models.
 
-![LLMChat Interface](examples\image1.png)
-![LLMChat Response](examples\image2.png)
+![LLMChat Interface](examples/image1.png)
+![LLMChat Response](examples/image2.png)
 
 ## ✨ Features
 
