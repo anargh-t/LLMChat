@@ -13,16 +13,19 @@ A modern, interactive LLM chat interface built with Streamlit and Ollama that al
 - **Error Handling**: Robust error handling with user-friendly messages
 - **Responsive Design**: Works seamlessly across different devices
 - **Easy Deployment**: Simple setup and deployment process
+- **Cloud Ready**: Configured for Streamlit Cloud deployment
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Local Development
+
+#### Prerequisites
 
 - Python 3.8 or higher
 - Ollama installed and running locally
 - At least one LLM model downloaded via Ollama
 
-### Installation
+#### Installation
 
 1. **Clone the repository**
    ```bash
@@ -50,13 +53,43 @@ A modern, interactive LLM chat interface built with Streamlit and Ollama that al
 5. **Open your browser**
    Navigate to `http://localhost:8501` to access the chatbot.
 
+### 🌐 Streamlit Cloud Deployment
+
+#### Option 1: Deploy to Streamlit Cloud (Recommended)
+
+1. **Push your code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Add Streamlit Cloud deployment configuration"
+   git push origin main
+   ```
+
+2. **Deploy on Streamlit Cloud**
+   - Go to [share.streamlit.io](https://share.streamlit.io)
+   - Sign in with your GitHub account
+   - Click "New app"
+   - Select your repository and set the path to `chatbot.py`
+   - Click "Deploy"
+
+#### Option 2: Manual Deployment
+
+1. **Ensure your repository is public**
+2. **Verify deployment files are present**:
+   - `chatbot.py` (main app file)
+   - `requirements.txt` (Python dependencies)
+   - `.streamlit/config.toml` (Streamlit configuration)
+   - `packages.txt` (system dependencies, if needed)
+
+3. **Deploy via Streamlit Cloud dashboard**
+
 ## 📋 Requirements
 
-Create a `requirements.txt` file with the following dependencies:
+The `requirements.txt` file includes:
 
 ```
 streamlit>=1.28.0
 ollama>=0.1.0
+requests>=2.31.0
 ```
 
 ## 🎯 Usage
@@ -104,13 +137,34 @@ The Streamlit interface can be customized by modifying:
 
 ```
 llmchat/
-├── chatbot.py          # Main application file
-├── requirements.txt    # Python dependencies
-├── README.md          # Project documentation
-├── .gitignore         # Git ignore file
-└── examples/          # Example prompts and responses
+├── chatbot.py              # Main application file
+├── requirements.txt        # Python dependencies
+├── packages.txt           # System dependencies (for Streamlit Cloud)
+├── .streamlit/
+│   └── config.toml       # Streamlit configuration
+├── README.md              # Project documentation
+├── .gitignore             # Git ignore file
+└── examples/              # Example prompts and responses
     └── sample_prompts.txt
 ```
+
+### Deployment Files
+
+- **`.streamlit/config.toml`**: Streamlit configuration for deployment
+- **`packages.txt`**: System dependencies (if needed)
+- **`requirements.txt`**: Python package dependencies
+
+## 🚨 Important Notes
+
+### For Streamlit Cloud Deployment
+
+⚠️ **Note**: Streamlit Cloud doesn't support running Ollama locally. For a fully functional cloud deployment, you would need to:
+
+1. **Use a cloud-based Ollama service** (like Ollama Cloud)
+2. **Modify the code** to connect to a remote Ollama instance
+3. **Or use alternative LLM APIs** (like OpenAI, Anthropic, etc.)
+
+The current implementation is designed for local development with Ollama running on your machine.
 
 ## 📝 License
 

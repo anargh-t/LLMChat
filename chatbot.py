@@ -12,6 +12,7 @@ License: MIT
 import streamlit as st
 import ollama
 import time
+import requests
 from typing import Optional
 
 # Page configuration
@@ -21,6 +22,36 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+def check_ollama_connection() -> bool:
+    """
+    Check if Ollama is running and accessible.
+    
+    Returns:
+        bool: True if Ollama is accessible, False otherwise
+    """
+    try:
+        # Try to connect to Ollama
+        response = requests.get("http://localhost:11434/api/tags", timeout=5)
+        return response.status_code == 200
+    except:
+        return False
+
+def get_available_models() -> list:
+    """
+    Get list of available models from Ollama.
+    
+    Returns:
+        list: List of available model names
+    """
+    try:
+        response = requests.get("http://localhost:11434/api/tags", timeout=5)
+        if response.status_code == 200:
+            models_data = response.json()
+            return [model['name'] for model in models_data.get('models', [])]
+        return []
+    except:
+        return []
 
 def generate_llm_response(prompt: str, model: str = "llama3.2") -> str:
     """
@@ -65,6 +96,36 @@ def format_response(response: str) -> str:
 def main():
     """Main application function."""
     
+    # Check Ollama connection first
+    if not check_ollama_connection():
+        st.error("❌ **Ollama is not running or not accessible!**")
+        st.markdown("""
+        **To fix this issue:**
+        
+        1. **Install Ollama** (if not already installed):
+           - Download from: https://ollama.com/download
+           - Or run: `winget install Ollama.Ollama`
+        
+        2. **Start Ollama service:**
+           - Open a new terminal/command prompt
+           - Run: `ollama serve`
+        
+        3. **Pull a model:**
+           - Run: `ollama pull llama3.2` (or any other model)
+        
+        4. **Restart this app** after Ollama is running
+        """)
+        
+        st.info("💡 **Quick Start:** Open a new terminal and run these commands:")
+        st.code("""
+ollama serve
+ollama pull llama3.2
+        """)
+        return
+    
+    # Get available models
+    available_models = get_available_models()
+    
     # Sidebar configuration
     with st.sidebar:
         st.title("🤖 LLMChat")
@@ -72,13 +133,27 @@ def main():
         
         # Model selection
         st.subheader("Model Settings")
-        model_options = ["llama3.2", "llama3.1", "mistral", "codellama", "neural-chat"]
+        
+        if available_models:
+            model_options = available_models
+            default_index = 0
+        else:
+            model_options = ["llama3.2", "llama3.1", "mistral", "codellama", "neural-chat"]
+            default_index = 0
+            st.warning("⚠️ No models found. Please pull a model using `ollama pull <model_name>`")
+        
         selected_model = st.selectbox(
             "Choose Model:",
             model_options,
-            index=0,
+            index=default_index,
             help="Select the LLM model to use for generating responses"
         )
+        
+        # Show model status
+        if available_models:
+            st.success(f"✅ {len(available_models)} model(s) available")
+        else:
+            st.error("❌ No models available")
         
         st.markdown("---")
         
@@ -93,7 +168,9 @@ def main():
         - Error handling
         - Clean interface
         
-        **Models Available:**
+        **Available Models:**
+        """ + "\n".join([f"- {model}" for model in available_models]) if available_models else """
+        **Common Models:**
         - llama3.2 (default)
         - llama3.1
         - mistral
@@ -125,6 +202,13 @@ def main():
     # Main content area
     st.title("🤖 LLMChat")
     st.markdown("Interact with an LLM assistant powered by Ollama and Streamlit")
+    
+    # Show connection status
+    if check_ollama_connection():
+        st.success("✅ Connected to Ollama")
+    else:
+        st.error("❌ Not connected to Ollama")
+        return
     
     # Initialize session state
     if 'conversation_history' not in st.session_state:
